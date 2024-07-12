@@ -19,9 +19,9 @@ class HelloControllerTest {
 
     @Test
     public void helloTest() throws Exception{
-        String hello = "hello";
+        String hello = "helloa";
 
-        mvc.perform((MockMvcRequestBuilders.get("/hello")))
+        mvc.perform((MockMvcRequestBuilders.get("/helloa")))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(hello));
     }
