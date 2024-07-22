@@ -40,7 +40,6 @@ public class Order {
     private String uuid = UUID.randomUUID().toString();
 
 
-
     public void addOrderItem(OrderItem orderItem) {
         orderItems.add(orderItem);
         orderItem.setOrder(this);

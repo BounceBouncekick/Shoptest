@@ -1,9 +1,12 @@
 package com.example.jpashop.service;
 
+import com.example.jpashop.dto.DeliveryDto;
 import com.example.jpashop.dto.OrderItemDto;
+import com.example.jpashop.entity.Delivery;
 import com.example.jpashop.entity.Order;
 import com.example.jpashop.entity.OrderItem;
 import com.example.jpashop.entity.Product;
+import com.example.jpashop.repository.DeliveryRepository;
 import com.example.jpashop.repository.OrderRepository;
 import com.example.jpashop.repository.ProductRepository;
 import jakarta.transaction.Transactional;
@@ -21,27 +24,28 @@ public class Orderservice {
 
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
+    private final DeliveryRepository deliveryRepository;
 
     @Transactional
-    public void order(OrderItemDto orderItemDTO, String name, String uuid){
+    public void order(OrderItemDto orderItemDto, String name, String uuid, DeliveryDto deliveryDto){
         Optional<Product> optionalItem = Optional.ofNullable(productRepository.findByUuid(uuid));
 
-        log.info(" optionalItem = {}" ,optionalItem);
+        log.info("optionalItem = {}" ,optionalItem);
         if (optionalItem.isPresent()) {
             Product product = optionalItem.get();
             log.info("Product found: {}", product);
 
             // 상품을 사용하여 주문 상품 생성
-            OrderItem orderItem = OrderItem.createOrderItem(product, orderItemDTO);
+            OrderItem orderItem = OrderItem.createOrderItem(product,orderItemDto);
 
             // 주문 생성 (주문 상품을 배열로 넘겨줌)
             Order order = Order.createOrder(product,orderItem);
-
-
-
             orderRepository.save(order);
 
-            product.removeStock(orderItemDTO.getCount());
+            Delivery delivery = Delivery.createDelivery(deliveryDto);
+            deliveryRepository.save(delivery);
+
+            product.removeStock(orderItemDto.getCount());
 
             updateTotalAmount();
         } else {

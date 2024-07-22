@@ -21,10 +21,13 @@ public class OrderItemDto {
 
     private int count; //주문 수량
 
+    private DeliveryDto deliveryDto;
+
     @Builder
-    public  OrderItemDto(int orderPrice, int count) {
+    public  OrderItemDto(int orderPrice, int count, DeliveryDto deliveryDto) {
         this.orderPrice = orderPrice;
         this.count = count;
+        this.deliveryDto = deliveryDto;
     }
 
     public static OrderItemDto toEntity(OrderItem orderItem){
