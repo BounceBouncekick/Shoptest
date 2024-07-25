@@ -23,6 +23,8 @@ public class ProductService {
         @Transactional(rollbackFor = Exception.class)
         public void create(ProductDto productDTO) throws IOException {
 
+            log.info("df");
+
             try {
                 Product product = Product.toDTO(productDTO);
 
@@ -32,7 +34,7 @@ public class ProductService {
                 log.info("product boardWriter = {}", product.getBoardwriter());
                 log.info("product productname = {}", product.getProductname());
                 productRepository.save(product);
-
+                log.info("df");
                 } catch (Exception e) {
                 throw new IllegalStateException(e);
             }
@@ -40,16 +42,19 @@ public class ProductService {
 
         @Transactional(readOnly = true)
         public List<Product> findItems(){
+            log.info("df");
             return productRepository.findAll();
         }
 
         @Transactional(readOnly = true)
         public Product findItemByUuid(String uuid) {
+            log.info("df");
             return productRepository.findByUuid(uuid);
         }
 
         @Transactional(rollbackFor = Exception.class)
         public void update(String uuid,ProductDto productDTO) {
+            log.info("df");
 
             try {
                 Optional<Product> optionalItem = Optional.ofNullable(productRepository.findByUuid(uuid));
@@ -62,14 +67,15 @@ public class ProductService {
                             productDTO.getProductname());
                 }
 
-
+                log.info("df");
             } catch (Exception e) {
-
+                log.info("df");
                 throw new IllegalStateException(e);
             }
         }
         @Transactional(rollbackFor = Exception.class)
         public void delete(String uuid){
+            log.info("df");
             try {
             Optional<Product> optionalItem = Optional.ofNullable(productRepository.findByUuid(uuid));
 
@@ -77,14 +83,12 @@ public class ProductService {
                 Product product = optionalItem.get();
                 productRepository.delete(product);
             }
-
+                log.info("df");
             } catch (Exception e) {
                 throw new IllegalStateException(e);
             }
+            log.info("df");
         }
 
-    public void cool(){
-
-    }
 }
 

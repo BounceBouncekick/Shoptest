@@ -19,26 +19,31 @@ public class CartService {
     private CartRepository cartRepository;
 
     public CartItemDto addItemToCart(CartItemDto cartItemDto) {
+        log.info("dfa");
         CartItem cartItem = new CartItem(
                 cartItemDto.getProductName(),
                 cartItemDto.getQuantity(),
                 cartItemDto.getPrice()
         );
-
+        log.info("df");
         CartItem savedItem = cartRepository.save(cartItem);
         return toDto(savedItem);
     }
 
     public List<CartItemDto> getCartItems() {
+        log.info("df");
         List<CartItem> cartItems = cartRepository.findAll();
+        log.info("df");
         return cartItems.stream().map(this::toDto).collect(Collectors.toList());
     }
 
     public void removeItemFromCart(Long id) {
+        log.info("df");
         cartRepository.deleteById(id);
     }
 
     private CartItemDto toDto(CartItem cartItem) {
+        log.info("df");
         return CartItemDto.builder()
                 .id(cartItem.getId())
                 .productName(cartItem.getProductName())
@@ -47,8 +52,5 @@ public class CartService {
                 .build();
     }
 
-    public void cool(){
-
-    }
 }
 
