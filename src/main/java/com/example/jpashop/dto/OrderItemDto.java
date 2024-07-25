@@ -36,4 +36,8 @@ public class OrderItemDto {
                 .count(orderItem.getCount())
                 .build();
     }
+
+    public void cool(){
+
+    }
 }

@@ -81,4 +81,8 @@ public class Product {
         }
         this.stockQuantity = restStock;
     }
+
+    public void cool(){
+
+    }
 }

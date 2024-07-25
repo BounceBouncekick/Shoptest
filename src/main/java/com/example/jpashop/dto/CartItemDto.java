@@ -13,5 +13,8 @@ public class CartItemDto {
     private double price;
 
 
+    public void cool(){
+
+    }
 
 }

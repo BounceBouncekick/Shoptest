@@ -9,4 +9,8 @@ import lombok.Setter;
 public class OrderRequestDto {
     private OrderItemDto orderItem;
     private DeliveryDto delivery;
+
+    public void cool(){
+
+    }
 }

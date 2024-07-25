@@ -55,4 +55,8 @@ public class ProductController {
         productService.delete(uuid);
         return ResponseEntity.ok("삭제되었습니다.");
     }
+
+    public void cool(){
+
+    }
 }

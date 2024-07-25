@@ -82,4 +82,8 @@ public class Orderservice {
         // 여기서 totalAmount를 저장하거나 사용하세요.
         log.info("Total Amount: {}", totalAmount);
     }
+
+    public void cool(){
+
+    }
 }

@@ -37,5 +37,9 @@ public class OrderController {
         return ResponseEntity.ok("취소되었습니다.");
     }
 
+    public void cool(){
+
+    }
+
 
 }

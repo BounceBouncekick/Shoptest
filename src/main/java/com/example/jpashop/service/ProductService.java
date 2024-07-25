@@ -82,5 +82,9 @@ public class ProductService {
                 throw new IllegalStateException(e);
             }
         }
+
+    public void cool(){
+
+    }
 }
 

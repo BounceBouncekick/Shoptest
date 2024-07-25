@@ -46,5 +46,9 @@ public class CartService {
                 .price(cartItem.getPrice())
                 .build();
     }
+
+    public void cool(){
+
+    }
 }
 

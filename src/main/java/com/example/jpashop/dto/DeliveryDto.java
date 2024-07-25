@@ -28,4 +28,8 @@ public class DeliveryDto {
                 .zipcode(delivery.getZipcode())
                 .build();
     }
+
+    public void cool(){
+
+    }
 }

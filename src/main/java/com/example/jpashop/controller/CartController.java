@@ -32,4 +32,8 @@ public class CartController {
         cartService.removeItemFromCart(id);
         return ResponseEntity.ok().build();
     }
+
+    public void cool(){
+
+    }
 }

@@ -51,4 +51,8 @@ public class Delivery {
                 .zipcode(deliveryDto.getZipcode())
                 .build();
     }
+
+    public void cool(){
+
+    }
 }

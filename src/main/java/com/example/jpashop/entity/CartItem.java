@@ -25,4 +25,8 @@ public class CartItem {
         this.quantity = quantity;
         this.price = price;
     }
+
+    public void cool(){
+
+    }
 }

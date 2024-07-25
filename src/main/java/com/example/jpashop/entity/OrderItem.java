@@ -80,5 +80,9 @@ public class OrderItem {
         return getOrderPrice() * getCount();
     }
 
+    public void cool(){
+
+    }
+
 
 }

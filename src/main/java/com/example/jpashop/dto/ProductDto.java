@@ -33,4 +33,8 @@ public class ProductDto {
                 .productname(product.getProductname())
                 .build();
     }
+
+    public void cool(){
+
+    }
 }
