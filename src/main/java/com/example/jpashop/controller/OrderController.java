@@ -21,12 +21,13 @@ public class OrderController {
     @PostMapping("/orders/{uuid}/order")
     public ResponseEntity<String> order(@RequestBody OrderRequestDto orderRequestDto,
                                         @RequestParam("name") String name, @PathVariable("uuid") String uuid)throws IOException {
-
+        log.info("df");
 
         log.info("Controller_name : {}",name);
         log.info("Controller_uuid : {}",uuid);
 
         orderservice.order(orderRequestDto.getOrderItem(), name, uuid, orderRequestDto.getDelivery());
+        log.info("df");
         return ResponseEntity.ok("주문되었습니다.");
 
     }
@@ -34,8 +35,10 @@ public class OrderController {
     @PostMapping("/orders/{uuid}/cancel")
     public ResponseEntity<String> cancelOrder(@PathVariable("uuid") String uuid) {
         orderservice.cancelOrder(uuid);
+        log.info("df");
         return ResponseEntity.ok("취소되었습니다.");
     }
+
 
 
 }

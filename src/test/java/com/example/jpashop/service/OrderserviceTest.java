@@ -56,7 +56,7 @@ class OrderserviceTest {
                 .boardwriter("Test Writer")  // 여기에서 boardwriter 설정
                 .productname("Test Product Name")
                 .build();
-
+        log.info("df");
         Product savedproduct = productRepository.save(product);
         Product findProduct = productRepository.findById(savedproduct.getId()).orElse(null);
 
@@ -67,7 +67,7 @@ class OrderserviceTest {
     @Transactional
     @Rollback(false)
     public void testOrder() {
-
+        log.info("df");
         product = Product.builder()
                 .name("Test Product")
                 .price(1000)
@@ -82,7 +82,7 @@ class OrderserviceTest {
                 .orderPrice(1000)
                 .count(2)
                 .build();
-
+        log.info("df");
         DeliveryDto deliveryDto = DeliveryDto.builder()
                 .city("seoul")
                 .zipcode("bong")
@@ -91,13 +91,13 @@ class OrderserviceTest {
 
         Delivery city = deliveryRepository.findByCity(deliveryDto.getCity());
         assertEquals("seoul",deliveryDto.getCity());
-
+        log.info("df");
 
         orderService.order(orderItemDto, "Test User", product.getUuid(), deliveryDto);
         Optional<Order> optionalOrder = orderRepository.findAll().stream().findFirst();
         assertTrue(optionalOrder.isPresent(), "Order should be present");
         Order order = optionalOrder.get();
-
+        log.info("df");
         assertEquals(1, order.getOrderItems().size(), "Order should have one order item");
         assertEquals(8, product.getStockQuantity(), "Product stock quantity should be reduced");
 

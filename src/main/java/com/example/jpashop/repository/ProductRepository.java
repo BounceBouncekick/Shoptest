@@ -18,4 +18,6 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     void updateItemByUUID(@Param("uuid") String uuid, @Param("name") String name,
                           @Param("price") int price, @Param("stockQuantity") int stockQuantity,
                           @Param("boardwriter") String boardwriter, @Param("productname") String productname);
+
+    Product findByStockQuantity(String StockQuantity);
 }

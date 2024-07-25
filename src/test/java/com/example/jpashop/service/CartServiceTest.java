@@ -36,22 +36,24 @@ public class CartServiceTest {
     @Transactional
     @Rollback(false)
     public void testAddItem() {
+
+        log.info("df");
         // 기존 코드
         CartItemDto cartItemDto = CartItemDto.builder()
                 .productName("Laptop")
                 .quantity(1)
                 .price(999.99)
                 .build();
-
+        log.info("df");
         CartItem cartItem = CartItem.builder()
                 .productName(cartItemDto.getProductName())
                 .quantity(cartItemDto.getQuantity())
                 .price(cartItemDto.getPrice())
                 .build();
-
+        log.info("df");
         CartItem savedCartItem = cartRepository.save(cartItem);
         CartItemDto addedItem = cartService.addItemToCart(cartItemDto);
-
+        log.info("df");
         log.info("Before deletion: " + cartRepository.findAll());
 
 
@@ -67,23 +69,23 @@ public class CartServiceTest {
                 .quantity(1)
                 .price(999.99)
                 .build();
-
+        log.info("df");
         CartItem cartItem = CartItem.builder()
                 .productName(cartItemDto.getProductName())
                 .quantity(cartItemDto.getQuantity())
                 .price(cartItemDto.getPrice())
                 .build();
-
+        log.info("df");
         CartItem savedCartItem = cartRepository.save(cartItem);
         CartItemDto addedItem = cartService.addItemToCart(cartItemDto);
 
         log.info("Before deletion: " + cartRepository.findAll());
-
+        log.info("df");
         // 항목 삭제
         cartService.removeItemFromCart(addedItem.getId());
 
         log.info("After deletion: " + cartRepository.findAll());
-
+        log.info("df");
         // 항목이 삭제되었는지 확인
         assertTrue(cartRepository.findById(addedItem.getId()).isEmpty());
     }

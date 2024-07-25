@@ -81,5 +81,9 @@ public class Order {
     private void decreaseTotalAmount() {
         this.totalAmount -= this.totalPrice;
     }
+
+    public void cool(){
+
+    }
 }
 
